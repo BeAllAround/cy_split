@@ -6,12 +6,11 @@
 #include <stack>
 #include <deque>
 
-
-#include "debug.h"
-
-using namespace std;
+#include "../lib/debug.h"
 
 #define TYPE stack
+
+using namespace std;
 
 TYPE<string> split(string s, string delimiter) {
 	int c = 0;
