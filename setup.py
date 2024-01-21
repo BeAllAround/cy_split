@@ -9,7 +9,7 @@ from Cython.Build import cythonize
 setup(
         ext_modules=[
             Extension('_splits',
-                sources=['_splits.pyx'],
+                sources=['./src/_splits.pyx'],
                 extra_compile_args=["-O3"],
             )
         ],

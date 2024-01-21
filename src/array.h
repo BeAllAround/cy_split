@@ -3,7 +3,7 @@
 
 #include <Python.h>
 
-#include "str_cmp.h"
+#include "../lib/str_cmp.h"
 
 char** array(void) {
 	char**arr = (char**)malloc(100);
