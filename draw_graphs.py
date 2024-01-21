@@ -58,6 +58,9 @@ if __name__ == '__main__':
     print(tc[0], len(tc), len(tc1), tc1[0])
     print(sc[0], len(sc), len(sc1), sc1[0])
     print(len(m), len(m1))
+    avg = sum(tc)/len(tc)
+    avg1 = sum(tc1)/len(tc1)
+    print('avg: ', ((avg-avg1) / avg1) * 100, '%' )
     plt.plot(sc, tc, label = '<cy_split>')
     plt.plot(sc1, tc1, label = '<built-in method split>')
 
