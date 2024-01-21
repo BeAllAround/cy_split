@@ -1,7 +1,7 @@
 from time import time
 from numpy import char
 
-from src._splits import remake
+from _splits import remake
 
 import tracemalloc
 

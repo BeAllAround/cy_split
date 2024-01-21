@@ -4,8 +4,8 @@ from time import time
 
 import re
 
-from src._splits import split as cysplit
-from src._splits import remake
+from _splits import split as cysplit
+from _splits import remake
 
 from numpy import char
 
