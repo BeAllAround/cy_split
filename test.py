@@ -35,9 +35,10 @@ def _remake(**kwargs):
 def _native(**kwargs):
     trace = kwargs.get('trace') == True
 
+    start = time()
+
     trace and tracemalloc.start()
 
-    start = time()
     s.split(deli)
 
     trace and print(tracemalloc.get_traced_memory())
