@@ -27,7 +27,7 @@ def _remake(**kwargs):
 
     trace and print(tracemalloc.get_traced_memory())
 
-    print(time() - start)
+    print('remake: ', time() - start)
 
     trace and tracemalloc.stop()
 
@@ -43,7 +43,7 @@ def _native(**kwargs):
 
     trace and print(tracemalloc.get_traced_memory())
 
-    print(time() - start)
+    print('split: ', time() - start)
 
     trace and tracemalloc.stop()
 
