@@ -17,8 +17,6 @@ s = 'a  '*100_000
 def _remake(**kwargs):
     trace = kwargs.get('trace') == True
 
-    trace and tracemalloc.start()
-
     start = time()
 
     trace and tracemalloc.start()
@@ -56,3 +54,4 @@ if __name__ == '__main__':
     _native(trace=True)
     _remake(trace=True)
     _remake(trace=True)
+    _native(trace=True)
