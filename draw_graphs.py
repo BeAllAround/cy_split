@@ -21,7 +21,8 @@ tc1 = []
 
 
 step, start_range, end_range = 100, 100_000, 102_000
-deli = 'aa'
+# deli = '     ' * 100000
+deli = 'b'
 
 for i in range(start_range, end_range, step):
     s = 'a  ' * i
