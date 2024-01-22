@@ -20,7 +20,7 @@ sc1 = []
 tc1 = []
 
 
-step, start_range, end_range = 100, 100_000, 102_000
+step, start_range, end_range = 100, 100_000, 105_000
 # deli = '     ' * 100000
 deli = 'b'
 
@@ -61,8 +61,8 @@ if __name__ == '__main__':
     avg = sum(tc)/len(tc)
     avg1 = sum(tc1)/len(tc1)
     print('avg: ', ((avg-avg1) / avg1) * 100, '%' )
-    plt.plot(sc, tc, label = '<cy_split>')
-    plt.plot(sc1, tc1, label = '<built-in method split>')
+    plt.plot(sc, tc, label = str(remake))
+    plt.plot(sc1, tc1, label = str(''.split))
 
     plt.ylabel('Time Complexity')
     plt.xlabel('Space Complexity')
