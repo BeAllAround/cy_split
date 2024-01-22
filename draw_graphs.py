@@ -20,11 +20,11 @@ sc1 = []
 tc1 = []
 
 
-step = 3
+step, start_range, end_range = 100, 100_000, 102_000
+deli = 'aa'
 
-for i in range(100_000, 100_100, step):
+for i in range(start_range, end_range, step):
     s = 'a  ' * i
-    deli = ' '
 
     sc1.append(len(s))
 
@@ -36,11 +36,10 @@ for i in range(100_000, 100_100, step):
     trace and m1.append(tracemalloc.get_traced_memory()[1])
     trace and tracemalloc.stop()
 
-    tc1.append(time() - start)
+    tc1.append((time() - start) * 1000)
 
-for i in range(100_000, 100_100, step):
+for i in range(start_range, end_range, step):
     s = 'a  ' * i
-    deli = ' '
     
     sc.append(len(s))
 
@@ -52,7 +51,7 @@ for i in range(100_000, 100_100, step):
     trace and m.append(tracemalloc.get_traced_memory()[1])
     trace and tracemalloc.stop()
 
-    tc.append(time() - start)
+    tc.append((time() - start) * 1000)
 
 if __name__ == '__main__':
     print(tc[0], len(tc), len(tc1), tc1[0])

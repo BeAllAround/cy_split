@@ -199,6 +199,7 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, long long s_l, long long s
 	// int single = sp_l == 1;
 
 	long long _i = str_cmp(s, delimiter);
+	// long long _i = -1;
 
 	if(_i == -1) {
 		S2 = s_l;
