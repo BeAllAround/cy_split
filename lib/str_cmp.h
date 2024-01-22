@@ -2,12 +2,9 @@
 long long str_cmp(const char* str, const char* sub) {
         long long i = 0;
         while(*str != 0) {
-                const char* _sub = sub;
                 const char* _str = str;
-                while(*_str != 0 && *_sub != 0) {
-                        if(*_str != *_sub){
-                                break;
-                        }
+                const char* _sub = sub;
+                while(*_str != 0 && *_sub != 0 && *_str == *_sub) {
                         _str++, _sub++;
                 }
                 if(*_sub==0)
