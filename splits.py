@@ -88,6 +88,10 @@ assert split(str2, "D") == str2.split("D")
 assert split(' ', ' ') == ' '.split(' ')
 assert split('  ', ' ') == '  '.split(' ')
 assert split('  ', '  ') == '  '.split('  ')
+
+for w_s in [ ' ', '\t', '\n', '\v', '\f', '\r']:
+    assert split(w_s.join(['1', '2', '3', '4']), w_s) == w_s.join(['1', '2', '3', '4']).split(w_s)
+
 t+=1; # the end of the first test block
 
 def double_split(string, _split, *splits):
