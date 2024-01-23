@@ -10,6 +10,7 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, long long s_l, long long s
         long long c = 0;
         long long i = 0;
 
+
         // string*arr = (string*)malloc(sizeof(s) * 10);
 	// struct myArray arr = createMyArray();
         // int push = 0;
@@ -175,6 +176,8 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, long long s_l, long l
 
 	// char* _ss = strstr(s, delimiter);
 
+	char __char = *delimiter;
+
 	char* __i = strstr(s, delimiter);
         // long long _i = str_cmp(s, delimiter);
 	// long long _i = -1;
@@ -197,6 +200,7 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, long long s_l, long l
         }
 
 
+
         while(i < s_l) {
                 if(s_l-i >= sp_l) {
 			/*
@@ -217,7 +221,7 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, long long s_l, long l
 			}
 			delimiter = temp;
 			*/
-			if(s[i] != *delimiter+0) {
+			if(s[i] !=  __char) {
 				S2++;
                                 c = 0;
 			}
@@ -232,7 +236,7 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, long long s_l, long l
                         // __s += s[i];
                 }
 // exit_loop:
-                if(c == sp_l) {
+                if(c) {
                         
 			// __s.r[0] = S1;
 			// __s.r[1] = S2;
