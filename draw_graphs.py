@@ -22,11 +22,32 @@ tc1 = []
 
 step, start_range, end_range = 100, 100_000, 105_000
 # deli = '     ' * 100000
-deli = 'b'
+_s =  'a  '
+deli = ' '
 
 for i in range(start_range, end_range, step):
-    s = 'a  ' * i
+    s = _s * i
 
+    # cy_split
+    # s = 'a  ' * i
+
+    sc.append(len(s))
+
+    start = time()
+
+    trace and tracemalloc.start()
+    remake(s, deli)
+
+    trace and m.append(tracemalloc.get_traced_memory()[1])
+    trace and tracemalloc.stop()
+
+    tc.append((time() - start) * 1000)
+
+
+for i in range(start_range, end_range, step):
+    s = _s * i
+
+    # split
     sc1.append(len(s))
 
     start = time()
@@ -39,20 +60,6 @@ for i in range(start_range, end_range, step):
 
     tc1.append((time() - start) * 1000)
 
-for i in range(start_range, end_range, step):
-    s = 'a  ' * i
-    
-    sc.append(len(s))
-
-    start = time()
-
-    trace and tracemalloc.start()
-    remake(s, deli)
-
-    trace and m.append(tracemalloc.get_traced_memory()[1])
-    trace and tracemalloc.stop()
-
-    tc.append((time() - start) * 1000)
 
 if __name__ == '__main__':
     print(tc[0], len(tc), len(tc1), tc1[0])
