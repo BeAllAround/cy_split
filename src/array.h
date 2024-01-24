@@ -202,39 +202,14 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, long long s_l, long l
 
 
         while(i < s_l) {
-                if(s_l-i >= sp_l) {
-			/*
-			int x = 0;
-			char* temp = delimiter;
-
-			while(*delimiter != 0) {
-				if(s[i+x] != *delimiter) {
-					push_char(__s, s[i]);
-					c = 0;
-					delimiter = temp;
-					break;
-				}else {
-					c++;
-				}
-				delimiter++;
-				x++;
-			}
-			delimiter = temp;
-			*/
-			if(s[i] !=  __char) {
-				S2++;
-                                c = 0;
-			}
-			else {
-				c++;
-			}
-
-                }
-                else {
+		if(s[i] !=  __char) {
 			S2++;
-			// push_char(&__s, s[i]);
-                        // __s += s[i];
-                }
+                        c = 0;
+		}
+		else {
+			c = 1;
+		}
+
 // exit_loop:
                 if(c) {
                         
