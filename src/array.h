@@ -17,10 +17,14 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, long long s_l, long long s
 
 	const char* ERR = "ERROR";
 
-	char *s = (char*)PyUnicode_DATA(str);
-	char* delimiter = (char*)PyUnicode_DATA(_delimiter);
+	register char *s = (char*)PyUnicode_DATA(str);
+	register char* delimiter = (char*)PyUnicode_DATA(_delimiter);
 
 	PyObject* objarr = PyList_New(0);
+	if(sp_l > s_l) {
+		PyList_Append(objarr, str);
+		return objarr;
+	}
 	// Py_INCREF(objarr);
 	// see: https://docs.python.org/3/c-api/refcounting.html#c.Py_NewRef
 
