@@ -20,7 +20,7 @@ sc1 = []
 tc1 = []
 
 
-step, start_range, end_range = 100, 100_000, 105_000
+step, start_range, end_range = 100, 100_000, 110_000
 # deli = '     ' * 100000
 _s =  'a  '
 deli = ' '
