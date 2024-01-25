@@ -20,9 +20,12 @@ sc1 = []
 tc1 = []
 
 
-step, start_range, end_range = 100, 100_000, 110_000
+step, start_range, end_range = 100, 10_000, 11_000
 # deli = '     ' * 100000
-_s =  'a  '
+# heavy case
+# _s =  'a  ' + ('  ' * 10000)
+# deli = ' ' * 10000 
+_s = 'a  '
 deli = ' '
 
 for i in range(start_range, end_range, step):
