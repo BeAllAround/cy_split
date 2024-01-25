@@ -14,6 +14,8 @@ def remake(str s, str delimiter):
     if len(delimiter) == 1:
         return _remake_char(s, delimiter, len(s), len(delimiter))
 
+    # if delimiter not in s:
+     #    return [ s ]
     return _remake(s, delimiter, len(s), len(delimiter))
 
 def _remake_char(str sref, str delimiter, long long s_l, long long sp_l):
