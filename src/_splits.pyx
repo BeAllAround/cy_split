@@ -1,8 +1,11 @@
 from time import time
 
+ctypedef unsigned long long INT_size
 cdef extern from "array.h":
-    cdef list csplit(str, str, long long, long long);
-    cdef list csplit_char(str, str, long long, long long);
+    cdef list csplit(str, str, INT_size, INT_size);
+    cdef list csplit_char(str, str, INT_size, INT_size);
+
+
 
 
 
@@ -18,11 +21,11 @@ def remake(str s, str delimiter):
      #    return [ s ]
     return _remake(s, delimiter, len(s), len(delimiter))
 
-def _remake_char(str sref, str delimiter, long long s_l, long long sp_l):
+def _remake_char(str sref, str delimiter, INT_size s_l, INT_size sp_l):
     cdef list arr1 = csplit_char(sref, delimiter, s_l, sp_l)
     return arr1
 
-def _remake(str sref, str delimiter, long long s_l, long long sp_l):
+def _remake(str sref, str delimiter, INT_size s_l, INT_size sp_l):
     # cdef list arr = []
 
     # start = time()

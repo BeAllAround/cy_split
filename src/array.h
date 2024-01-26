@@ -5,10 +5,12 @@
 
 #include "../lib/str_cmp.h"
 
+typedef unsigned long long INT_size;
 
-PyObject* csplit(PyObject* str, PyObject* _delimiter, long long s_l, long long sp_l) {
-        long long c = 0;
-        long long i = 0;
+
+PyObject* csplit(PyObject* str, PyObject* _delimiter, INT_size s_l, INT_size sp_l) {
+        INT_size c = 0;
+        INT_size i = 0;
 
 
         // string*arr = (string*)malloc(sizeof(s) * 10);
@@ -34,13 +36,13 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, long long s_l, long long s
         // int s_l = strlen(s);
 	// printf("d: %d\n", s_l);
 	
-	long long S1 = 0;
-	long long S2 = 0;
+	INT_size S1 = 0;
+	INT_size S2 = 0;
 	// int single = sp_l == 1;
 
 	char* __i = strstr(s, delimiter);
-	// long long _i = str_cmp(s, delimiter);
-	// long long _i = -1;
+	// INT_size _i = str_cmp(s, delimiter);
+	// INT_size _i = -1;
 
 	if(__i == NULL) {
 		S2 = s_l;
@@ -62,7 +64,7 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, long long s_l, long long s
 
         while(i < s_l) {
                 if(s_l-i >= sp_l) {
-                        for(int x = 0; x < sp_l; x++) {
+                        for(INT_size x = 0; x < sp_l; x++) {
                                 if(s[i+x] != delimiter[x]) {
 					S2++;
 					// push_char(&__s, s[i]);
@@ -150,9 +152,9 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, long long s_l, long long s
 
 }
 
-PyObject* csplit_char(PyObject* str, PyObject* _delimiter, long long s_l, long long sp_l) {
-        long long c = 0;
-        long long i = 0;
+PyObject* csplit_char(PyObject* str, PyObject* _delimiter, INT_size s_l, INT_size sp_l) {
+        INT_size c = 0;
+        INT_size i = 0;
 
         // string*arr = (string*)malloc(sizeof(s) * 10);
 	// struct myArray arr = createMyArray();
@@ -175,16 +177,16 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, long long s_l, long l
 
 	// printf("\"%s\" \n", s);
 	
-	long long S1 = 0;
-	long long S2 = 0;
+	INT_size S1 = 0;
+	INT_size S2 = 0;
 
 	// char* _ss = strstr(s, delimiter);
 
 	char __char = *delimiter;
 
 	char* __i = strstr(s, delimiter);
-        // long long _i = str_cmp(s, delimiter);
-	// long long _i = -1;
+        // INT_size _i = str_cmp(s, delimiter);
+	// INT_size _i = -1;
 
         if(__i == NULL) {
                 S2 = s_l;
@@ -280,5 +282,5 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, long long s_l, long l
 
 }
 
-extern PyObject* csplit(PyObject*, PyObject*, long long, long long);
-extern PyObject* csplit_char(PyObject*, PyObject*, long long, long long);
+extern PyObject* csplit(PyObject*, PyObject*, INT_size, INT_size);
+extern PyObject* csplit_char(PyObject*, PyObject*, INT_size, INT_size);
