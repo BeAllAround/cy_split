@@ -4,6 +4,7 @@ from time import time
 
 
 import matplotlib.pyplot as plt
+import numpy
 
 from _splits import remake
 
@@ -56,6 +57,7 @@ for i in range(start_range, end_range, step):
     start = time()
 
     trace and tracemalloc.start()
+    # numpy.char.split(s, deli)
     s.split(deli)
 
     trace and m1.append(tracemalloc.get_traced_memory()[1])
