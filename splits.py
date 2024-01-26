@@ -89,6 +89,7 @@ assert split(' ', ' ') == ' '.split(' ')
 assert split('  ', ' ') == '  '.split(' ')
 assert split('  ', '  ') == '  '.split('  ')
 assert split('aaaaa', 'b') == 'aaaaa'.split('b')
+assert split('1,2,,3,', ',') == '1,2,,3,'.split(',')
 
 for w_s in [ ' ', '\t', '\n', '\v', '\f', '\r']:
     assert split(w_s.join(['1', '2', '3', '4']), w_s) == w_s.join(['1', '2', '3', '4']).split(w_s)
