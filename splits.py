@@ -1,10 +1,10 @@
 import sys
-import difflib
 import re
 from time import time
 
 from numpy import char
 
+from lib.asserts import Assert
 from _splits import split as cysplit
 from _splits import remake
 
@@ -67,20 +67,6 @@ def split(s: str, delimiter: str =''):
     if not bool(delimiter):
         return [ *s ]
     return remake(s, delimiter)
-
-class Assert:
-    assert_count = 0
-
-    @classmethod
-    def assert_v(cls, a, b, n = 0):
-        # print(str(a), str(b))
-        # print ( ''.join(list(difflib.ndiff(str(b), str(a)) )) )
-        assert a == b
-        if n == 0:
-            print("assert #" + str(cls.assert_count))
-            cls.assert_count += 1
-        else:
-            print("assert #" + str(n))
 
 def asserts():
     str1 = "  A B  C  "
