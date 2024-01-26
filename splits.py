@@ -1,13 +1,13 @@
 import sys
-
+import difflib
+import re
 from time import time
 
-import re
+from numpy import char
 
 from _splits import split as cysplit
 from _splits import remake
 
-from numpy import char
 
 def join(arr, adder):
     s = ''
@@ -73,6 +73,8 @@ class Assert:
 
     @classmethod
     def assert_v(cls, a, b, n = 0):
+        # print(str(a), str(b))
+        # print ( ''.join(list(difflib.ndiff(str(b), str(a)) )) )
         assert a == b
         if n == 0:
             print("assert #" + str(cls.assert_count))
