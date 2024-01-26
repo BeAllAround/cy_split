@@ -10,12 +10,12 @@ from _splits import remake
 from numpy import char
 
 def join(arr, adder):
-    s = '';
+    s = ''
     for x in range(len(arr)-1):
-        s += arr[x] + adder;
+        s += arr[x] + adder
     if len(arr) != 0:
-        s += arr[-1];
-    return s;
+        s += arr[-1]
+    return s
 
 def _split(s:str, splitter:str):
     # s += splitter; # the last element
@@ -68,47 +68,57 @@ def split(s: str, delimiter: str =''):
         return [ *s ]
     return remake(s, delimiter)
 
+class Assert:
+    assert_count = 0
 
-if __name__ == '__main__' :
+    @classmethod
+    def assert_v(cls, a, b, n = 0):
+        assert a == b
+        if n == 0:
+            print("assert #" + str(cls.assert_count))
+            cls.assert_count += 1
+        else:
+            print("assert #" + str(n))
+
+def asserts():
     str1 = "  A B  C  "
     str2 = "A B C"
     str3 = ""
     str4 = "ABBBCCDJKBCCDDDBCBCDR.TEABCCVA"
-    t = 1
 
-    sys.stdout.write("TESTS #" + str(t) + '\n');
-    assert remake('a', 'a') == 'a'.split('a')
-    assert split('s d1', 'd12') == 's d1'.split('d12')
-    assert split(str4, "BCC") == str4.split("BCC")
-    assert split(str1, " ") == str1.split(" ")
-    assert split(str2, " ") == str2.split(" ")
-    assert split(str3, "dd") == str3.split("dd")
-    assert split(str2, "D") == str2.split("D")
-    assert split(' ', ' ') == ' '.split(' ')
-    assert split('  ', ' ') == '  '.split(' ')
-    assert split('  ', '  ') == '  '.split('  ')
-    assert split('aaaaa', 'b') == 'aaaaa'.split('b')
-    assert split('1,2,,3,', ',') == '1,2,,3,'.split(',')
+    sys.stdout.write("asserts..." + '\n')
+
+    Assert.assert_v(remake('a', 'a'), 'a'.split('a'))
+    Assert.assert_v(split('s d1', 'd12'), 's d1'.split('d12'))
+    Assert.assert_v(split(str4, "BCC"), str4.split("BCC"))
+    Assert.assert_v(split(str1, " "), str1.split(" "))
+    Assert.assert_v(split(str2, " "), str2.split(" "))
+    Assert.assert_v(split(str3, "dd"), str3.split("dd"))
+    Assert.assert_v(split(str2, "D"), str2.split("D"))
+    Assert.assert_v(split(' ', ' '), ' '.split(' '))
+    Assert.assert_v(split('  ', ' '), '  '.split(' '))
+    Assert.assert_v(split('  ', '  '), '  '.split('  '))
+    Assert.assert_v(split('aaaaa', 'b'), 'aaaaa'.split('b'))
+    Assert.assert_v(split('1,2,,3,', ','), '1,2,,3,'.split(','))
 
     for w_s in [ ' ', '\t', '\n', '\v', '\f', '\r']:
-        assert split(w_s.join(['1', '2', '3', '4']), w_s) == w_s.join(['1', '2', '3', '4']).split(w_s)
+        Assert.assert_v(split(w_s.join(['1', '2', '3', '4']), w_s), w_s.join(['1', '2', '3', '4']).split(w_s))
 
-    t+=1; # the end of the first test block
+def double_split(string, _split, *splits):
+    a1 = split(string, _split) # string.split(_split); # the python_std version
+    a2 = []
+    for one in splits:
+        for j in a1:
+            a2.extend(split(j, one)) # a2.extend(j.split(one));
+        a1 = list(a2)
+        a2.clear()
+    return a1
 
-    def double_split(string, _split, *splits):
-        a1 = split(string, _split); # string.split(_split); # the python_std version
-        a2 = [];
-        for one in splits:
-            for j in a1:
-                a2.extend(split(j, one)); # a2.extend(j.split(one));
-            a1 = list(a2);
-            a2.clear();
-        return a1;
 
-    # sys.stdout.write("TESTS #" + str(t) + '\n');
+
+if __name__ == '__main__' :
     # print(double_split("aA--b-\ncSuper\nTrial\nSome\n\n\nWorking hours", "-", '\n', 'a', ' '));
-    # print(split("turbo"))
-
+    asserts()
 
     print('#TIMING')
 
