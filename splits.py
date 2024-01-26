@@ -69,80 +69,79 @@ def split(s: str, delimiter: str =''):
     return remake(s, delimiter)
 
 
-# TODO: ADD if __name__ == '__main__' 
+if __name__ == '__main__' :
+    str1 = "  A B  C  "
+    str2 = "A B C"
+    str3 = ""
+    str4 = "ABBBCCDJKBCCDDDBCBCDR.TEABCCVA"
+    t = 1
 
-str1 = "  A B  C  ";
-str2 = "A B C";
-str3 = "";
-str4 = "ABBBCCDJKBCCDDDBCBCDR.TEABCCVA";
-t = 1;
+    sys.stdout.write("TESTS #" + str(t) + '\n');
+    assert remake('a', 'a') == 'a'.split('a')
+    assert split('s d1', 'd12') == 's d1'.split('d12')
+    assert split(str4, "BCC") == str4.split("BCC")
+    assert split(str1, " ") == str1.split(" ")
+    assert split(str2, " ") == str2.split(" ")
+    assert split(str3, "dd") == str3.split("dd")
+    assert split(str2, "D") == str2.split("D")
+    assert split(' ', ' ') == ' '.split(' ')
+    assert split('  ', ' ') == '  '.split(' ')
+    assert split('  ', '  ') == '  '.split('  ')
+    assert split('aaaaa', 'b') == 'aaaaa'.split('b')
+    assert split('1,2,,3,', ',') == '1,2,,3,'.split(',')
 
-sys.stdout.write("TESTS #" + str(t) + '\n');
-assert remake('a', 'a') == 'a'.split('a')
-assert split('s d1', 'd12') == 's d1'.split('d12')
-assert split(str4, "BCC") == str4.split("BCC")
-assert split(str1, " ") == str1.split(" ")
-assert split(str2, " ") == str2.split(" ")
-assert split(str3, "dd") == str3.split("dd")
-assert split(str2, "D") == str2.split("D")
-assert split(' ', ' ') == ' '.split(' ')
-assert split('  ', ' ') == '  '.split(' ')
-assert split('  ', '  ') == '  '.split('  ')
-assert split('aaaaa', 'b') == 'aaaaa'.split('b')
-assert split('1,2,,3,', ',') == '1,2,,3,'.split(',')
+    for w_s in [ ' ', '\t', '\n', '\v', '\f', '\r']:
+        assert split(w_s.join(['1', '2', '3', '4']), w_s) == w_s.join(['1', '2', '3', '4']).split(w_s)
 
-for w_s in [ ' ', '\t', '\n', '\v', '\f', '\r']:
-    assert split(w_s.join(['1', '2', '3', '4']), w_s) == w_s.join(['1', '2', '3', '4']).split(w_s)
+    t+=1; # the end of the first test block
 
-t+=1; # the end of the first test block
+    def double_split(string, _split, *splits):
+        a1 = split(string, _split); # string.split(_split); # the python_std version
+        a2 = [];
+        for one in splits:
+            for j in a1:
+                a2.extend(split(j, one)); # a2.extend(j.split(one));
+            a1 = list(a2);
+            a2.clear();
+        return a1;
 
-def double_split(string, _split, *splits):
-    a1 = split(string, _split); # string.split(_split); # the python_std version
-    a2 = [];
-    for one in splits:
-        for j in a1:
-            a2.extend(split(j, one)); # a2.extend(j.split(one));
-        a1 = list(a2);
-        a2.clear();
-    return a1;
-
-# sys.stdout.write("TESTS #" + str(t) + '\n');
-# print(double_split("aA--b-\ncSuper\nTrial\nSome\n\n\nWorking hours", "-", '\n', 'a', ' '));
-# print(split("turbo"))
-
-
-print('#TIMING')
-
-s = 'a  '*100_000
-
-delimiter = ' '
-start = time()
-split(s, delimiter)
-print(time() - start)
-
-start = time()
-s.split(delimiter)
-print("native split: ", time() - start)
-
-start = time()
-cysplit(s, delimiter)
-print(time() - start)
+    # sys.stdout.write("TESTS #" + str(t) + '\n');
+    # print(double_split("aA--b-\ncSuper\nTrial\nSome\n\n\nWorking hours", "-", '\n', 'a', ' '));
+    # print(split("turbo"))
 
 
-start = time()
-re.split('\W+', s)
-print(time() - start)
+    print('#TIMING')
+
+    s = 'a  '*100_000
+
+    delimiter = ' '
+    start = time()
+    split(s, delimiter)
+    print(time() - start)
+
+    start = time()
+    s.split(delimiter)
+    print("native split: ", time() - start)
+
+    start = time()
+    cysplit(s, delimiter)
+    print(time() - start)
+
+
+    start = time()
+    re.split('\W+', s)
+    print(time() - start)
 
 
 
-# s1 = bytes(s, 'utf-8')
-start = time()
-remake(s, delimiter)
-# print('a  '.split('a') == list(remake(bytes('a  ', 'utf-8'), bytes('a', 'utf-8') )))
-print('remake: ', time() - start)
+    # s1 = bytes(s, 'utf-8')
+    start = time()
+    remake(s, delimiter)
+    # print('a  '.split('a') == list(remake(bytes('a  ', 'utf-8'), bytes('a', 'utf-8') )))
+    print('remake: ', time() - start)
 
-start = time()
-char.split(s, delimiter)
-print(time() - start)
+    start = time()
+    char.split(s, delimiter)
+    print(time() - start)
 
 

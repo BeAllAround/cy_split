@@ -8,6 +8,8 @@ import numpy
 
 from _splits import remake
 
+from splits import _split
+
 
 
 trace = True
@@ -40,6 +42,7 @@ for i in range(start_range, end_range, step):
     start = time()
 
     trace and tracemalloc.start()
+    # _split(s, deli)
     remake(s, deli)
 
     trace and m.append(tracemalloc.get_traced_memory()[1])
