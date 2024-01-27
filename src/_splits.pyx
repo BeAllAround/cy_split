@@ -6,9 +6,6 @@ cdef extern from "array.h":
     cdef list csplit_char(str, str, INT_size, INT_size);
 
 
-
-
-
 def callback():
     pass
 
