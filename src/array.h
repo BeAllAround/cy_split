@@ -41,6 +41,7 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, INT_size s_l, INT_size sp_
 	// int single = sp_l == 1;
 
 	char* __i = strstr(s, delimiter);
+	// char* __i = NULL;
 	// INT_size _i = str_cmp(s, delimiter);
 	// INT_size _i = -1;
 
