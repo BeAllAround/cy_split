@@ -79,7 +79,7 @@ if __name__ == '__main__':
     plt.plot(sc, tc, label = str(remake))
     plt.plot(sc1, tc1, label = str(''.split))
 
-    plt.ylabel('Time Complexity (' + str(round(((avg-avg1) / avg1) * 100)) + '%' + ')' )
+    plt.ylabel('Time Complexity (' + str(round(((avg-avg1) / avg1) * 100)) + '%' + '), ' + 'separator: ' + '"' + deli + '"' )
     plt.xlabel('Space Complexity')
     plt.legend()
     plt.show()
