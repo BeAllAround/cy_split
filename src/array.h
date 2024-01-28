@@ -137,6 +137,13 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, INT_size s_l, INT_size sp_
                 i++;
         }
 
+	/*
+	if(S2 - S1 == s_l-1) {
+		PyList_Append(objarr, str);
+		return objarr;
+	}
+	*/
+
 	PyObject* obj = PyUnicode_DecodeUTF8(s+S1, S2 - S1, ERR);
 	PyList_Append(objarr, obj);
 	Py_DECREF(obj);
