@@ -108,7 +108,7 @@ if __name__ == '__main__' :
     # print(double_split("aA--b-\ncSuper\nTrial\nSome\n\n\nWorking hours", "-", '\n', 'a', ' '));
     asserts()
 
-    print('#TIMING')
+    print("#TIMING")
 
     s = 'a  '*100_000
 
@@ -127,8 +127,9 @@ if __name__ == '__main__' :
 
 
     start = time()
-    re.split('\W+', s)
-    print(time() - start)
+    split_pattern = "\W+"
+    re.split(split_pattern, s)
+    print(f"re.split(\"{split_pattern}\"): ", time() - start)
 
 
 
@@ -136,7 +137,7 @@ if __name__ == '__main__' :
     start = time()
     remake(s, delimiter)
     # print('a  '.split('a') == list(remake(bytes('a  ', 'utf-8'), bytes('a', 'utf-8') )))
-    print('remake: ', time() - start)
+    print("remake: ", time() - start)
 
     start = time()
     char.split(s, delimiter)
