@@ -1,4 +1,4 @@
-# cy_split - reimplementation of built-in Python split function
+# cy_split - reimplementation of built-in Python split function in C,Cython
 
 to build, run the test and draw the graph:
 
