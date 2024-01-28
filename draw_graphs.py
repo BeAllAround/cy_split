@@ -32,7 +32,7 @@ _s = 'a  '
 deli = ' '
 
 for i in range(start_range, end_range, step):
-    s = _s * i
+    s = _s * i + 'bb'
 
     # cy_split
     # s = 'a  ' * i
@@ -52,7 +52,7 @@ for i in range(start_range, end_range, step):
 
 
 for i in range(start_range, end_range, step):
-    s = _s * i
+    s = _s * i + 'bb'
 
     # split
     sc1.append(len(s))
