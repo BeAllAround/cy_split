@@ -1,5 +1,7 @@
 # cy_split - re-implementation of built-in Python split function in C, Cython
 
+This is, of course, an experimental project that shows how efficient your functions can be if properly implemented in C.
+
 to build, run the test and draw up the graph:
 
 `bash ./src/build.sh && python3 splits.py && python3 test.py && python3 draw_graphs.py`
