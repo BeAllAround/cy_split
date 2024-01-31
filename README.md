@@ -4,7 +4,7 @@ This is, of course, an experimental project that shows how efficient your functi
 
 to build, run the test and draw up the graph:
 
-`bash ./src/build.sh && python3 splits.py && python3 test.py && python3 draw_graphs.py`
+`bash ./src/build.sh && bash test.sh && python3 draw_graphs.py`
 
 
 # Time, Space Complexity Charts

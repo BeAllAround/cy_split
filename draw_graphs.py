@@ -7,7 +7,7 @@ import numpy
 
 import cy
 
-from splits import _split
+from tests.py import _split
 
 class ComplexityGraph:
     def __init__(self):

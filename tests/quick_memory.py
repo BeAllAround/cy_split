@@ -3,7 +3,7 @@ import tracemalloc
 
 from numpy import char
 
-import cy
+from context import cy
 
 
 # start = time()
