@@ -1,9 +1,10 @@
 from time import time
+import tracemalloc
+
 from numpy import char
 
-from _splits import remake
+import cy
 
-import tracemalloc
 
 # start = time()
 # char.split(s, ' ')
@@ -21,13 +22,13 @@ def _remake(**kwargs):
 
     trace and tracemalloc.start()
 
-    remake(s, deli)
+    cy.split(s, deli)
 
     # print('a  '.split('a') == list(remake(bytes('a  ', 'utf-8'), bytes('a', 'utf-8') )))
 
     trace and print(tracemalloc.get_traced_memory())
 
-    print('remake: ', time() - start)
+    print('cy_split: ', time() - start)
 
     trace and tracemalloc.stop()
 

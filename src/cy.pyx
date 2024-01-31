@@ -6,32 +6,16 @@ cdef extern from "array.h":
     cdef list csplit_char(str, str, INT_size, INT_size);
 
 
-def callback():
-    pass
-
-
-def remake(str s, str delimiter):
+def __cy_split(str s, str delimiter):
     if len(delimiter) == 1:
-        return _remake_char(s, delimiter, len(s), len(delimiter))
+        return csplit_char(s, delimiter, len(s), len(delimiter))
 
-    # if delimiter not in s:
-     #    return [ s ]
-    return _remake(s, delimiter, len(s), len(delimiter))
+    return csplit(s, delimiter, len(s), len(delimiter))
 
-def _remake_char(str sref, str delimiter, INT_size s_l, INT_size sp_l):
-    cdef list arr1 = csplit_char(sref, delimiter, s_l, sp_l)
-    return arr1
-
-def _remake(str sref, str delimiter, INT_size s_l, INT_size sp_l):
-    # cdef list arr = []
-
-    # start = time()
-    cdef list arr1 = csplit(sref, delimiter, s_l, sp_l);
-    # print('end: ', time() - start) 
-    # print(arr1)
-
-    return arr1
-
+def split(str s, str delimiter = ''):
+    if not len(delimiter):
+        return [ *s ]
+    return __cy_split(s, delimiter)
 
 def _split(s:str, splitter:str):
     # s += splitter; # the last element
@@ -78,8 +62,3 @@ def _split(s:str, splitter:str):
     arr.append(__s) # the last element final fix
 
     return arr
-
-def split(s:str, splitter:str=''):
-    if not bool(splitter):
-        return [*s]
-    return _split(s, splitter)

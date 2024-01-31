@@ -1,12 +1,11 @@
 import tracemalloc
-
 from time import time
 
 
 import matplotlib.pyplot as plt
 import numpy
 
-from _splits import remake
+import cy
 
 from splits import _split
 
@@ -32,6 +31,7 @@ class ComplexityGraph:
 
             self.trace and tracemalloc.start()
             s.split(deli)
+            # numpy.char.split(s, deli)
             # func(s, deli)
             
             self.trace and m.append(tracemalloc.get_traced_memory()[1])
@@ -49,7 +49,8 @@ class ComplexityGraph:
             start_time = time()
 
             self.trace and tracemalloc.start()
-            remake(s, deli)
+            cy.split(s, deli)
+            # _split(s, deli)
             # func(s, deli)
 
             self.trace and m.append(tracemalloc.get_traced_memory()[1])
@@ -62,7 +63,7 @@ class ComplexityGraph:
         def builtin_split(s, deli):
             s.split(deli)
 
-        tc, sc, m = self.mockup_remake(remake, self.deli)
+        tc, sc, m = self.mockup_remake(cy.split, self.deli)
         tc1, sc1, m1 = self.mockup_builtin(builtin_split, self.deli)
 
         print(tc[0], len(tc), len(tc1), tc1[0])
@@ -70,12 +71,16 @@ class ComplexityGraph:
         print(len(m), len(m1))
         avg = sum(tc)/len(tc)
         avg1 = sum(tc1)/len(tc1)
-        print('avg: ', ((avg-avg1) / avg1) * 100, '%' )
 
-        plt.plot(sc, tc, label = str(remake))
+        f_on_avg = ((avg-avg1) / avg1) * 100
+        print('avg: ', f_on_avg, '%' )
+
+        plt.plot(sc, tc, label = str(cy.split))
         plt.plot(sc1, tc1, label = str(''.split))
 
-        plt.ylabel('Time Complexity (' + str(round(((avg-avg1) / avg1) * 100)) + '%' + '), ' + 'separator: ' + '"' + self.deli + '"' )
+        plt.ylabel('Time Complexity (' +
+                str(round(f_on_avg)) + '%' + '), ' 
+                + 'separator: ' + '"' + self.deli + '"' )
         plt.xlabel('Space Complexity')
         plt.legend()
         plt.show()

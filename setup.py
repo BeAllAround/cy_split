@@ -8,8 +8,8 @@ from Cython.Build import cythonize
 
 setup(
         ext_modules=[
-            Extension('_splits',
-                sources=['./src/_splits.pyx'],
+            Extension('cy',
+                sources=['./src/cy.pyx'],
                 extra_compile_args=["-O3"],
             )
         ],

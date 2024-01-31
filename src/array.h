@@ -240,7 +240,7 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, INT_size s_l, INT_siz
 			
 			PyList_Append(objarr, obj);
 
-			// Py_DECREF(obj);
+			Py_DECREF(obj);
 
 			i += c-1;
                         // __s.clear();
@@ -276,7 +276,7 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, INT_size s_l, INT_siz
 
 	PyObject* obj = PyUnicode_DecodeUTF8(s+S1, S2 - S1, ERR);
 	PyList_Append(objarr, obj);
-	// Py_DECREF(obj);
+	Py_DECREF(obj);
 
 	// __s.r[0] = S1;
 	// __s.r[1] = S2;

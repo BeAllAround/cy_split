@@ -3,11 +3,9 @@ import re
 from time import time
 
 from numpy import char
+import cy
 
 from lib.asserts import Assert
-from _splits import split as cysplit
-from _splits import remake
-
 
 def join(arr, adder):
     s = ''
@@ -56,18 +54,6 @@ def _split(s:str, splitter:str):
 
     return arr
 
-'''
-def split(s:str, splitter:str=''):
-    if not bool(splitter):
-        return [ *s ]
-    return _split(s, splitter)
-'''
-
-def split(s: str, delimiter: str =''):
-    if not bool(delimiter):
-        return [ *s ]
-    return remake(s, delimiter)
-
 def double_split(string, _split, *splits):
     a1 = split(string, _split) # string.split(_split); # the python_std version
     a2 = []
@@ -89,21 +75,21 @@ class Program:
 
         sys.stdout.write("asserts..." + '\n')
 
-        Assert.assert_v(remake('a', 'a'), 'a'.split('a'))
-        Assert.assert_v(split('s d1', 'd12'), 's d1'.split('d12'))
-        Assert.assert_v(split(str4, "BCC"), str4.split("BCC"))
-        Assert.assert_v(split(str1, " "), str1.split(" "))
-        Assert.assert_v(split(str2, " "), str2.split(" "))
-        Assert.assert_v(split(str3, "dd"), str3.split("dd"))
-        Assert.assert_v(split(str2, "D"), str2.split("D"))
-        Assert.assert_v(split(' ', ' '), ' '.split(' '))
-        Assert.assert_v(split('  ', ' '), '  '.split(' '))
-        Assert.assert_v(split('  ', '  '), '  '.split('  '))
-        Assert.assert_v(split('aaaaa', 'b'), 'aaaaa'.split('b'))
-        Assert.assert_v(split('1,2,,3,', ','), '1,2,,3,'.split(','))
+        Assert.assert_v(cy.split('a', 'a'), 'a'.split('a'))
+        Assert.assert_v(cy.split('s d1', 'd12'), 's d1'.split('d12'))
+        Assert.assert_v(cy.split(str4, "BCC"), str4.split("BCC"))
+        Assert.assert_v(cy.split(str1, " "), str1.split(" "))
+        Assert.assert_v(cy.split(str2, " "), str2.split(" "))
+        Assert.assert_v(cy.split(str3, "dd"), str3.split("dd"))
+        Assert.assert_v(cy.split(str2, "D"), str2.split("D"))
+        Assert.assert_v(cy.split(' ', ' '), ' '.split(' '))
+        Assert.assert_v(cy.split('  ', ' '), '  '.split(' '))
+        Assert.assert_v(cy.split('  ', '  '), '  '.split('  '))
+        Assert.assert_v(cy.split('aaaaa', 'b'), 'aaaaa'.split('b'))
+        Assert.assert_v(cy.split('1,2,,3,', ','), '1,2,,3,'.split(','))
 
         for w_s in [ ' ', '\t', '\n', '\v', '\f', '\r']:
-            Assert.assert_v(split(w_s.join(['1', '2', '3', '4']), w_s), w_s.join(['1', '2', '3', '4']).split(w_s))
+            Assert.assert_v(cy.split(w_s.join(['1', '2', '3', '4']), w_s), w_s.join(['1', '2', '3', '4']).split(w_s))
 
 
     @classmethod
@@ -117,7 +103,7 @@ class Program:
 
         delimiter = ' '
         start = time()
-        split(s, delimiter)
+        cy._split(s, delimiter)
         print(time() - start)
 
         start = time()
@@ -125,7 +111,7 @@ class Program:
         print("native split: ", time() - start)
 
         start = time()
-        cysplit(s, delimiter)
+        _split(s, delimiter)
         print(time() - start)
 
 
@@ -138,13 +124,13 @@ class Program:
 
         # s1 = bytes(s, 'utf-8')
         start = time()
-        remake(s, delimiter)
+        cy.split(s, delimiter)
         # print('a  '.split('a') == list(remake(bytes('a  ', 'utf-8'), bytes('a', 'utf-8') )))
-        print("remake: ", time() - start)
+        print("cy_split: ", time() - start)
 
         start = time()
         char.split(s, delimiter)
-        print(time() - start)
+        print("numpy.char.split: ", time() - start)
 
 
 
