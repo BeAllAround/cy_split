@@ -45,8 +45,8 @@ def _split(s:str, splitter:str):
 
     return arr
 
-def double_split(string, _split, *splits):
-    a1 = split(string, _split) # string.split(_split); # the python_std version
+def double_split(string, deli, *splits):
+    a1 = split(string, deli)
     a2 = []
     for one in splits:
         for j in a1:
