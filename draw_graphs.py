@@ -7,7 +7,7 @@ import numpy
 
 import cy
 
-from tests.py import _split
+import tests.py as py
 
 class ComplexityGraph:
     def __init__(self):
@@ -50,7 +50,7 @@ class ComplexityGraph:
 
             self.trace and tracemalloc.start()
             cy.split(s, deli)
-            # _split(s, deli)
+            # py._split(s, deli)
             # func(s, deli)
 
             self.trace and m.append(tracemalloc.get_traced_memory()[1])
