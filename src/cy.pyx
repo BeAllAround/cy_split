@@ -9,7 +9,6 @@ cdef extern from "csplit.h":
 def __cy_split(str s, str delimiter):
     if len(delimiter) == 1:
         return csplit_char(s, delimiter, len(s), len(delimiter))
-
     return csplit(s, delimiter, len(s), len(delimiter))
 
 def split(str s, str delimiter = ''):
