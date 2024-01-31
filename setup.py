@@ -6,19 +6,21 @@ from Cython.Distutils import build_ext
 from Cython.Build import cythonize
 
 with open('README.md') as f:
-    readme = f.read()
+    README = f.read()
 
 with open('LICENSE') as f:
-    license = f.read()
+    LICENSE = f.read()
 
-setup(
+if __name__ == '__main__':
+    setup(
+        install_requires=[ 'cython' ],
         name="cy_split",
         version="0.0.1",
         description="Efficient split for Python",
-        long_description=readme,
+        long_description=README,
         author='Aleksandar Milenkovic',
         author_email='milenkovicaleksandar470@gmail.com',
-        license=license,
+        license=LICENSE,
         packages=find_packages(exclude=('tests')),
         ext_modules=[
             Extension('cy',
@@ -26,5 +28,5 @@ setup(
                 extra_compile_args=["-O3"],
             )
         ],
-        cmdclass = { 'build_ext': build_ext }
-) 
+        cmdclass={'build_ext':build_ext}
+    ) 
