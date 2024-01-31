@@ -28,7 +28,7 @@ def _remake(**kwargs):
 
     trace and print(tracemalloc.get_traced_memory())
 
-    print('cy_split: ', time() - start)
+    print('cy.split: ', time() - start)
 
     trace and tracemalloc.stop()
 

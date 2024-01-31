@@ -126,7 +126,7 @@ class Program:
         start = time()
         cy.split(s, delimiter)
         # print('a  '.split('a') == list(remake(bytes('a  ', 'utf-8'), bytes('a', 'utf-8') )))
-        print("cy_split: ", time() - start)
+        print("cy.split: ", time() - start)
 
         start = time()
         char.split(s, delimiter)
