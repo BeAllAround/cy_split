@@ -85,12 +85,12 @@ class ComplexityGraph:
         plt.legend()
         plt.show()
 
+
 class Program:
     @classmethod
     def main(cls):
         graph = ComplexityGraph()
         graph.plot()
-
 
 
 if __name__ == '__main__':
