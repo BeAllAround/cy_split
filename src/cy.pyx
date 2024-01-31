@@ -1,7 +1,7 @@
 from time import time
 
 ctypedef unsigned long long INT_size
-cdef extern from "array.h":
+cdef extern from "csplit.h":
     cdef list csplit(str, str, INT_size, INT_size);
     cdef list csplit_char(str, str, INT_size, INT_size);
 
