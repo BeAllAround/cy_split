@@ -9,8 +9,8 @@ to build, run the test and draw up the graph:
 
 # Time, Space Complexity Charts
 
-![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmark/graphs/Figure_1.png)
+![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_1.png)
 
-![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmark/graphs/Figure_2.png)
+![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_2.png)
 
-![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmark/graphs/Figure_3.png)
+![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_3.png)
