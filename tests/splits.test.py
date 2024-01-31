@@ -6,8 +6,6 @@ from time import time
 import numpy
 from context import cy
 
-from lib.asserts import Assert
-
 class TestSplit(unittest.TestCase):
     def __init__(self, *args):
         super().__init__(*args)
