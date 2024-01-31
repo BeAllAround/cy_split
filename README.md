@@ -2,6 +2,10 @@
 
 This is, of course, an experimental project that shows how efficient your functions can be if properly implemented in C.
 
+Best Case `O(n)`
+
+Worst Case `O(n*m)`
+
 to build, run the test and draw up the graph:
 
 `bash ./src/build.sh && bash test.sh && python3 draw_graphs.py`
