@@ -56,3 +56,9 @@ int main(int argc, char* argv[]) {
 ![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_2.png)
 
 ![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_3.png)
+
+![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_4.png)
+
+![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_5.png)
+
+![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_6.png)
