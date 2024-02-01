@@ -29,23 +29,21 @@ PyObject* csplit(PyObject* str, PyObject* _delimiter, INT_size s_l, INT_size sp_
 	INT_size S1 = 0;
 	INT_size S2 = 0;
 
-	char* __i = strstr(s, delimiter);
+	// char* __i = strstr(s, delimiter);
 	// char* __i = NULL;
-	// INT_size _i = str_cmp(s, delimiter);
+	INT_size _i = str_cmp(s, delimiter);
 	// INT_size _i = -1;
 
-	if(__i == NULL) {
+	if(_i == -1) {
 		S2 = s_l;
 		PyList_Append(objarr, str);
 		return objarr;
 
 	}else {
-		/*
 		i += _i + sp_l;
 		PyObject* obj = PyUnicode_DecodeUTF8(s+0, _i, ERR);
 		PyList_Append(objarr, obj);
 		S1 = i, S2 = i;
-		*/
 	}
 
         while(i < s_l) {
@@ -119,22 +117,20 @@ PyObject* csplit_char(PyObject* str, PyObject* _delimiter, INT_size s_l, INT_siz
 
 	char __char = *delimiter;
 
-	char* __i = strstr(s, delimiter);
-        // INT_size _i = str_cmp(s, delimiter);
+	// char* __i = strstr(s, delimiter);
+        INT_size _i = str_cmp(s, delimiter);
 	// INT_size _i = -1;
 
-        if(__i == NULL) {
+        if(_i == -1) {
                 S2 = s_l;
                 PyList_Append(objarr, str);
                 return objarr;
 
         }else {
-		/*
                 i += _i + sp_l;
                 PyObject* obj = PyUnicode_DecodeUTF8(s+0, _i, ERR);
                 PyList_Append(objarr, obj);
                 S1 = i, S2 = i;
-		*/
         }
 
 
