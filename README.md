@@ -49,6 +49,15 @@ int main(int argc, char* argv[]) {
 }
 ```
 
+# Quick Example in Python
+
+```py
+import cy
+
+cy.split('a-a-a', '-')
+
+```
+
 # Time, Space Complexity Charts
 
 ![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_1.png)
