@@ -71,3 +71,7 @@ cy.split('a-a-a', '-')
 ![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_5.png)
 
 ![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/Figure_6.png)
+
+# Memory Usage Chart
+
+![alt text](https://github.com/BeAllAround/cy_split/blob/main/benchmarks/graphs/MemoryUsage_Figure.png)
