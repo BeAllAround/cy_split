@@ -20,6 +20,9 @@ void example() {
 	}
 	printf("]\n");
 
+	// PyObject_Print(slist, stdout, Py_PRINT_RAW);
+	// printf("\n");
+
 	Py_DECREF(s), Py_DECREF(delimiter), Py_DECREF(slist);
 
 }
