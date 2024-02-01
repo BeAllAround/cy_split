@@ -1,6 +1,7 @@
 import tracemalloc
 from time import time
 
+import argparse
 
 import matplotlib.pyplot as plt
 import numpy
@@ -10,11 +11,11 @@ import cy
 import tests.py as py
 
 class ComplexityGraph:
-    def __init__(self):
-        self._s = 'a  '
-        self.deli = ' '
-        self.trace = True
-        self.parameters()
+    def __init__(self, s = 'a  ', deli = ' ', trace = True, start_range = 10_000, end_range = 11_000, step = 100):
+        self._s = s
+        self.deli = deli
+        self.trace = trace
+        self.parameters(step, start_range, end_range)
 
     def parameters(self, step=100, start_range=10_000, end_range=11_000):
         self.step = step
@@ -92,7 +93,19 @@ class ComplexityGraph:
 class Program:
     @classmethod
     def main(cls):
-        graph = ComplexityGraph()
+        parser = argparse.ArgumentParser(
+                    prog='DrawGraph',
+                    description='Draw the Time Complexity Graph',
+                    epilog='help')
+        parser.add_argument('--string', default='a  ', type=str)
+        parser.add_argument('--sep', default=' ', type=str)
+        parser.add_argument('--trace', default=True, type=bool)
+        parser.add_argument('--start_range', default=10_000, type=int)
+        parser.add_argument('--end_range', default=11_000, type=int)
+        parser.add_argument('--step', default=100, type=int)
+        args = parser.parse_args()
+
+        graph = ComplexityGraph(*vars(args).values())
         graph.plot()
 
 
