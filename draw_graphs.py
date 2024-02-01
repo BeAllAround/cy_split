@@ -75,6 +75,9 @@ class ComplexityGraph:
         f_on_avg = ((avg-avg1) / avg1) * 100
         print('avg: ', f_on_avg, '%' )
 
+        plt.figure(figsize=(10, 7))
+        plt.title('Big O')
+
         plt.plot(sc, tc, label = str(cy.split))
         plt.plot(sc1, tc1, label = str(''.split))
 
