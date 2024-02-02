@@ -9,6 +9,25 @@ Worst Case `O(n*m)`
 to build, run the test and draw up the graph:
 
 `bash ./src/build.sh && bash test.sh && python3 draw_graphs.py`
+```
+python3 draw_graphs.py --help
+usage: DrawGraph [-h] [--string STRING] [--sep SEP] [--trace TRACE]
+                 [--start_range START_RANGE] [--end_range END_RANGE]
+                 [--step STEP]
+
+Draw the Time Complexity Graph
+
+options:
+  -h, --help            show this help message and exit
+  --string STRING
+  --sep SEP
+  --trace TRACE
+  --start_range START_RANGE
+  --end_range END_RANGE
+  --step STEP
+
+help
+```
 
 # Quick Example as C API
 
