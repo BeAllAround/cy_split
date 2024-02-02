@@ -13,7 +13,12 @@ def add_row(s, t, w = 15):
     
 
 def print_grid(rows, h = 25, w = 45):
-    w+=2 # starting '|'
+    # starting '|'
+    if w%2 == 0:
+        w+=1 
+    else:
+        w+=2
+
     screen = []
 
     screen.append('|' + '-' * w + '|')
