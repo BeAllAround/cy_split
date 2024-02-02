@@ -11,7 +11,7 @@ import cy
 import tests.py as py
 
 class ComplexityGraph:
-    def __init__(self, s = 'a  ', deli = ' ', trace = True, start_range = 10_000, end_range = 11_000, step = 100):
+    def __init__(self, s = 'a  ', deli = ' ', trace = False, start_range = 10_000, end_range = 11_000, step = 100):
         self._s = s
         self.deli = deli
         self.trace = trace
