@@ -23,7 +23,7 @@ class ComplexityGraph:
         self.end_range = end_range
 
     def mockup_builtin(self, func, deli):
-        tc, sc, m = [], [], []
+        tc, sc, m, smtc = [], [], [], 0
         for i in range(self.start_range, self.end_range, self.step):
             s = self._s * i + 'bb'
             sc.append(len(s))
@@ -38,11 +38,14 @@ class ComplexityGraph:
             self.trace and m.append(tracemalloc.get_traced_memory()[1])
             self.trace and tracemalloc.stop()
 
-            tc.append((time() - start_time) * 1000)
-        return (tc, sc, m)
+            t = (time() - start_time) * 1000 # miliseconds
+            tc.append(t)
+            smtc += t
 
-    def mockup_remake(self, func, deli):
-        tc, sc, m = [], [], []
+        return (tc, sc, m, smtc)
+
+    def mockup_cy_split(self, func, deli):
+        tc, sc, m, smtc = [], [], [], 0
         for i in range(self.start_range, self.end_range, self.step):
             s = self._s * i + 'bb'
             sc.append(len(s))
@@ -57,30 +60,38 @@ class ComplexityGraph:
             self.trace and m.append(tracemalloc.get_traced_memory()[1])
             self.trace and tracemalloc.stop()
 
-            tc.append((time() - start_time) * 1000)
-        return (tc, sc, m)
+            t = (time() - start_time) * 1000 # miliseconds
+            tc.append(t)
+            smtc += t
+
+        return (tc, sc, m, smtc)
 
     def plot(self):
         def builtin_split(s, deli):
             s.split(deli)
 
-        tc, sc, m = self.mockup_remake(cy.split, self.deli)
-        tc1, sc1, m1 = self.mockup_builtin(builtin_split, self.deli)
+        tc_cy, sc_cy, m_cy, smtc_cy = self.mockup_cy_split(cy.split, self.deli)
+        tc_built, sc_built, m_built, smtc_built = self.mockup_builtin(builtin_split, self.deli)
 
-        print(tc[0], len(tc), len(tc1), tc1[0])
-        print(sc[0], len(sc), len(sc1), sc1[0])
-        print(len(m), len(m1))
-        avg = sum(tc)/len(tc)
-        avg1 = sum(tc1)/len(tc1)
+        # print(tc[0], len(tc), len(tc1), tc1[0])
+        # print(sc[0], len(sc), len(sc1), sc1[0])
+        # print(len(m), len(m1))
 
-        f_on_avg = ((avg-avg1) / avg1) * 100
+        avg_cy = smtc_cy/len(tc_cy)
+        avg_built = smtc_built/len(tc_built)
+
+        # assert sum(tc_cy) == smtc_cy
+        # assert sum(tc_built) == smtc_built
+
+        f_on_avg = ((avg_cy-avg_built) / avg_built) * 100
+
         print('avg: ', f_on_avg, '%' )
 
         plt.figure(figsize=(10, 7))
         plt.title('Big O')
 
-        plt.plot(sc, tc, label = str(cy.split))
-        plt.plot(sc1, tc1, label = str(''.split))
+        plt.plot(sc_cy, tc_cy, label = str(cy.split))
+        plt.plot(sc_built, tc_built, label = str(''.split))
 
         plt.ylabel('Time Complexity (' +
                 str(round(f_on_avg)) + '%' + '), ' 
@@ -99,7 +110,7 @@ class Program:
                     epilog='help')
         parser.add_argument('--string', default='a  ', type=str)
         parser.add_argument('--sep', default=' ', type=str)
-        parser.add_argument('--trace', default=True, type=bool)
+        parser.add_argument('--trace', default=False, type=bool)
         parser.add_argument('--start_range', default=10_000, type=int)
         parser.add_argument('--end_range', default=11_000, type=int)
         parser.add_argument('--step', default=100, type=int)
