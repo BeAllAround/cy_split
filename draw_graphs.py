@@ -22,6 +22,7 @@ class ComplexityGraph:
         self.start_range = start_range
         self.end_range = end_range
 
+    '''
     def mockup_builtin(self, func, deli):
         tc, sc, m, smtc = [], [], [], 0
         for i in range(self.start_range, self.end_range, self.step):
@@ -43,8 +44,9 @@ class ComplexityGraph:
             smtc += t
 
         return (tc, sc, m, smtc)
+    '''
 
-    def mockup_cy_split(self, func, deli):
+    def mockup(self, func, deli):
         tc, sc, m, smtc = [], [], [], 0
         for i in range(self.start_range, self.end_range, self.step):
             s = self._s * i + 'bb'
@@ -53,9 +55,9 @@ class ComplexityGraph:
             start_time = time()
 
             self.trace and tracemalloc.start()
-            cy.split(s, deli)
+            # cy.split(s, deli)
             # py._split(s, deli)
-            # func(s, deli)
+            func(s, deli)
 
             self.trace and m.append(tracemalloc.get_traced_memory()[1])
             self.trace and tracemalloc.stop()
@@ -67,11 +69,13 @@ class ComplexityGraph:
         return (tc, sc, m, smtc)
 
     def plot(self):
-        def builtin_split(s, deli):
-            s.split(deli)
 
-        tc_cy, sc_cy, m_cy, smtc_cy = self.mockup_cy_split(cy.split, self.deli)
-        tc_built, sc_built, m_built, smtc_built = self.mockup_builtin(builtin_split, self.deli)
+        def builtin_split(s, deli):
+            # return numpy.char.split(s, deli)
+            return s.split(deli)
+
+        tc_cy, sc_cy, m_cy, smtc_cy = self.mockup(cy.split, self.deli)
+        tc_built, sc_built, m_built, smtc_built = self.mockup(builtin_split, self.deli)
 
         # print(tc[0], len(tc), len(tc1), tc1[0])
         # print(sc[0], len(sc), len(sc1), sc1[0])
