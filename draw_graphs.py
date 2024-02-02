@@ -112,12 +112,12 @@ class Program:
                     prog='DrawGraph',
                     description='Draw the Time Complexity Graph',
                     epilog='help')
-        parser.add_argument('--string', default='a  ', type=str)
-        parser.add_argument('--sep', default=' ', type=str)
-        parser.add_argument('--trace', default=False, type=bool)
-        parser.add_argument('--start_range', default=10_000, type=int)
-        parser.add_argument('--end_range', default=11_000, type=int)
-        parser.add_argument('--step', default=100, type=int)
+        parser.add_argument('--string', help='s.split where s is the string to split', default='a  ', type=str)
+        parser.add_argument('--sep', help="s.split(sep) where sep is the string to split against", default=' ', type=str)
+        parser.add_argument('--trace', help="True | False - trace memory usage", default=False, type=bool)
+        parser.add_argument('--start_range', help="Space Complexity - starting x", default=10_000, type=int)
+        parser.add_argument('--end_range', help="Space Complexity - ending x", default=11_000, type=int)
+        parser.add_argument('--step', help="increment between starting x and ending x", default=100, type=int)
         args = parser.parse_args()
 
         graph = ComplexityGraph(*vars(args).values())
