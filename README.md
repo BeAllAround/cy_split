@@ -19,12 +19,14 @@ Draw the Time Complexity Graph
 
 options:
   -h, --help            show this help message and exit
-  --string STRING
-  --sep SEP
-  --trace TRACE
+  --string STRING       s.split where s is the string to split
+  --sep SEP             s.split(sep) where sep is the string to split against
+  --trace TRACE         True | False - trace memory usage
   --start_range START_RANGE
+                        Space Complexity - starting x
   --end_range END_RANGE
-  --step STEP
+                        Space Complexity - ending x
+  --step STEP           increment between starting x and ending x
 
 help
 ```
