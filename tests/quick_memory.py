@@ -14,6 +14,9 @@ from context import cy
 deli = ' '
 # deli = '   '
 
+def cy__cc(s, deli):
+    return cy.split(s, deli)
+
 s = 'a  '*100_000
 def _remake(**kwargs):
     trace = kwargs.get('trace') == True
@@ -23,6 +26,7 @@ def _remake(**kwargs):
     trace and tracemalloc.start()
 
     cy.split(s, deli)
+    # cy__cc(s, deli)
 
     # print('a  '.split('a') == list(remake(bytes('a  ', 'utf-8'), bytes('a', 'utf-8') )))
 
