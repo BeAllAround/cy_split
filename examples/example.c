@@ -1,6 +1,7 @@
 #include "../src/csplit.h"
 
 // gcc -O3 -I/usr/include/python3.10 example.c -lpython3.10 -o out.out
+// valgrind -v --leak-check=full ./out.out
 
 
 void example() {
